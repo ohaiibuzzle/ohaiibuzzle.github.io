@@ -1,12 +1,19 @@
 .main-container {
-    max-width: 600px;
+    max-width: 800px;
     /* translucent background */
     backdrop-filter: blur(10px);
     /* add blur effect to background */
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     /* translucent background */
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     /* add shadow to background */
     padding: 20px;
     border-radius: 5px;
+    margin: auto;
+}
+
+@media (max-width: 800px) {
+    .main-container {
+        max-width: 90%;
+    }
 }
