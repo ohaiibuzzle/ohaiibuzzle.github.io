@@ -17,3 +17,9 @@
         max-width: 90%;
     }
 }
+
+.hero {
+    background: white;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.3);
+}
