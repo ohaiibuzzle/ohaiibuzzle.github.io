@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThisThingStreams™</title>
+  
+<style>:root{--bg:#0d0d0f;--surface:#16161a;--surface2:#1e1e24;--accent:#7c3aed;--accent-glow:#7c3aed40;--accent-light:#a78bfa;--text:#f0eeff;--muted:#6b6b80;--success:#22c55e;--danger:#f87171;--border:#28282f;--border-hover:#3f3f50}*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);display:flex;flex-direction:column;align-items: center;min-height:100vh;padding:2.5rem 1rem 4rem;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,system-ui,Roboto,Noto Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif}header{text-align:center;margin-bottom:2.5rem}header h1{letter-spacing:-.02em;background:linear-gradient(135deg,#c084fc 0%,#818cf8 100%);-webkit-text-fill-color:transparent;-webkit-background-clip:text;background-clip:text;font-size:1.85rem;font-weight:800}header p{color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-top:.3rem;font-size:.8rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;width:100%;max-width:680px;margin-bottom:1rem;padding:1.25rem 1.5rem}.card-label{text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.9rem;font-size:.7rem;font-weight:600}.card-label-row{display:flex;justify-content:space-between;align-items: center;margin-bottom:.9rem}.card-label-row .card-label{margin-bottom:0}.key-saved{color:var(--success);opacity:0;transition:opacity .3s;font-size:.7rem}.key-saved.visible{opacity:1}.field{display:flex;flex-direction:column;gap:.3rem}.field-label{color:var(--muted);font-size:.775rem}.row{display:flex;align-items: flex-end;gap:.6rem}.row .field{flex:1}.row .field.narrow{flex:0 0 130px}input,select{background:var(--bg);border:1px solid var(--border);color:var(--text);appearance:none;-webkit-appearance:none;border-radius:8px;width:100%;padding:.6rem .85rem;transition:border-color .15s,box-shadow .15s;font-size:.875rem}input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}input::placeholder{color:var(--muted)}select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b80' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-position:right .75rem center;background-repeat:no-repeat;padding-right:2rem}select option{background:#1a1a1f}button{background:var(--accent);color:#fff;cursor:pointer;white-space:nowrap;border:none;border-radius:8px;height:38px;padding:.6rem 1.4rem;transition:background .15s,transform .1s;font-size:.875rem;font-weight:600}button:hover{background:#6d28d9}button:active{transform:scale(.98)}button:disabled{background:var(--muted);cursor:not-allowed;transform:none}#status{text-align:center;color:var(--muted);width:100%;max-width:680px;min-height:1.5rem;margin:.25rem 0 .75rem;transition:color .2s;font-size:.825rem}#status.error{color:var(--danger)}#status.ok{color:var(--success)}#results{display:flex;flex-direction:column;gap:.6rem;width:100%;max-width:680px}.t-card{background:var(--surface);border:1px solid var(--border);overflow:hidden;border-radius:11px;transition:border-color .15s}.t-card:hover{border-color:var(--border-hover)}.t-card.open{border-color:var(--accent)}.t-header{display:flex;cursor:pointer;user-select:none;align-items: center;gap:.75rem;padding:.8rem 1rem}.t-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-size:.85rem;font-weight:500}.t-meta{display:flex;color:var(--muted);flex-shrink:0;align-items: center;gap:.6rem;font-size:.72rem}.pill{letter-spacing:.03em;border-radius:5px;padding:.15rem .45rem;font-size:.68rem;font-weight:600}.pill-cached{color:var(--success);background:#22c55e26}.seed-dot{background:var(--success);border-radius:50%;flex-shrink:0;width:6px;height:6px}.chevron{color:var(--muted);transition:transform .2s;font-size:.65rem}.t-card.open .chevron{transform:rotate(180deg)}.f-list{border-top:1px solid var(--border);overflow:hidden;max-height:0;transition:max-height .25s}.t-card.open .f-list{max-height:600px}.f-item{display:flex;border-bottom:1px solid var(--border);cursor:pointer;justify-content:space-between;align-items: center;gap:.5rem;padding:.55rem 1rem;transition:background .1s}.f-item:last-child{border-bottom:none}.f-item:hover{background:var(--surface2)}.f-item.selected{background:#7c3aed1f}.f-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-size:.8rem}.f-size{color:var(--muted);flex-shrink:0;font-size:.72rem}#watchWrap{display:none;width:100%;max-width:680px;margin-top:.5rem}#copyBtn{background:var(--accent);border-radius:10px;width:100%;margin-bottom:.6rem;padding:.75rem;font-size:.95rem}#copyBtn:hover{background:#6d28d9}.action-row{display:flex;gap:.6rem;margin-top:.6rem}.btn-outline{border:1px solid var(--border);color:var(--muted);cursor:pointer;background:0 0;border-radius:8px;flex:1;height:auto;padding:.5rem;transition:border-color .15s,color .15s;font-size:.8rem;font-weight:500}.btn-outline:hover{border-color:var(--border-hover);color:var(--text);background:0 0;transform:none}.btn-outline:active{transform:none}a.btn-outline{display:flex;text-decoration:none;justify-content:center;align-items: center}.stream-warn{color:var(--muted);text-align:center;opacity:.7;margin:.5rem 0 0;font-size:.7rem}#changeBtn{display:block;border:1px solid var(--border);color:var(--muted);background:0 0;border-radius:8px;width:100%;height:auto;margin-top:.6rem;padding:.45rem;font-size:.75rem;font-weight:500}#changeBtn:hover{border-color:var(--border-hover);color:var(--text);background:0 0;transform:none}#changeBtn:active{transform:none}.spin{display:inline-block;border:2px solid #fff3;border-top-color:var(--accent-light);animation:rot .65s linear infinite;vertical-align:middle;border-radius:50%;width:13px;height:13px;margin-right:.3rem}@keyframes rot{to{transform:rotate(360deg)}}.divider{border:none;border-top:1px solid var(--border);width:100%;max-width:680px;margin:.5rem 0 1rem}
+</style></head>
+<body>
+
+<header>
+  <h1>ThisThingStreams™</h1>
+  <p>Torrent → TorBox cache → Stream</p>
+</header>
+
+<!-- API Key -->
+<div class="card">
+  <div class="card-label-row">
+    <div class="card-label">TorBox API Key</div>
+    <span id="keySaved" class="key-saved">✓ Saved</span>
+  </div>
+  <input type="password" id="apiKey" placeholder="Paste your TorBox API key here" autocomplete="off" spellcheck="false">
+</div>
+
+<!-- Search -->
+<div class="card">
+  <div class="card-label">Search</div>
+  <div class="row">
+    <div class="field">
+      <div class="field-label">Query</div>
+      <input type="text" id="query" placeholder="e.g. Attack on Titan" autocomplete="off">
+    </div>
+    <div class="field narrow">
+      <div class="field-label">Category</div>
+      <select id="category">
+        <option value="anime">Anime</option>
+        <option value="anime_music_video">Anime MV</option>
+        <option value="audio">Audio</option>
+        <option value="literature">Literature</option>
+        <option value="live_action">Live Action</option>
+        <option value="pictures">Pictures</option>
+        <option value="software">Software</option>
+        <option value="">All</option>
+      </select>
+    </div>
+    <button id="searchBtn" onclick="runSearch()">Search</button>
+  </div>
+</div>
+
+<div id="status"></div>
+<div id="results"></div>
+
+<div id="watchWrap">
+  <hr class="divider">
+  <button id="copyBtn" onclick="copyLink()">Copy Link (for use with a media player)</button>
+  <div class="action-row">
+    <a id="watchLink" href="#" target="_blank" rel="noopener" class="btn-outline">Download</a>
+    <button id="vlcBtn" class="btn-outline" onclick="openVlc()">Open in VLC</button>
+  </div>
+  <button id="changeBtn" onclick="showResults()">← Change selection</button>
+</div>
+
+
+
+<script type="module">var i=(e)=>document.getElementById(e),k=[];function l(e,t=""){let o=i("status");o.innerHTML=e,o.className=t}function b(e){return String(e??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}function y(e){let t=e.match(/xt=urn:btih:([a-fA-F0-9]{32,40})/i);return t?t[1].toLowerCase():null}function z(e){if(!e)return 0;if(typeof e==="number")return e;let t=parseFloat(e);if(isNaN(t))return 0;let o=e.toString().toLowerCase();if(o.includes("gib")||o.includes("gb"))return Math.round(t*1e9);if(o.includes("mib")||o.includes("mb"))return Math.round(t*1e6);if(o.includes("kib")||o.includes("kb"))return Math.round(t*1000);return t}function h(e){if(!e)return"?";if(e>=1e9)return(e/1e9).toFixed(2)+" GB";if(e>=1e6)return(e/1e6).toFixed(1)+" MB";return(e/1000).toFixed(0)+" KB"}async function B(){let e=i("query").value.trim(),t=i("apiKey").value.trim();if(!e){l("Enter a search query first.","error");return}if(!t){l("Enter your TorBox API key first.","error");return}i("results").innerHTML="",i("results").style.display="",i("watchWrap").style.display="none",i("searchBtn").disabled=!0,l('<span class="spin"></span> Searching Nyaa…');let o=i("category").value,p=`https://nyaaapi.onrender.com/nyaa?q=${encodeURIComponent(e)}${o?"&category="+o:""}&sort=seeders&order=desc&page=1`,c;try{let r=await fetch(p,{headers:{accept:"application/json"}});if(!r.ok)throw Error(`Nyaa responded with ${r.status}`);let a=await r.json();c=Array.isArray(a)?a:a.data??a.torrents??a.results??[]}catch(r){l(`Nyaa fetch failed: ${r.message}`,"error"),i("searchBtn").disabled=!1;return}if(!c.length){l("No results on Nyaa for that query.","error"),i("searchBtn").disabled=!1;return}let m={};for(let r of c){let a=r.magnet??r.magnet_uri??"",d=y(a);if(d&&!m[d])m[d]=r}let n=Object.keys(m);if(!n.length){l("Could not extract info hashes from Nyaa results.","error"),i("searchBtn").disabled=!1;return}l(`<span class="spin"></span> Checking TorBox cache for ${n.length} torrent${n.length>1?"s":""}…`);let s;try{let r=await fetch("https://cors-proxy.ohaibuzzle-cloudflare.workers.dev/corsproxy/?apiurl="+encodeURIComponent("https://api.torbox.app/v1/api/torrents/checkcached"),{method:"POST",headers:{Authorization:`Bearer ${t}`,"Content-Type":"application/json"},body:JSON.stringify({hashes:n})});if(!r.ok){let d=await r.text();throw Error(`TorBox ${r.status}: ${d}`)}let a=await r.json();if(!a.success)throw Error(a.detail??"Cache check failed");s=a.data??{}}catch(r){l(`TorBox cache check failed: ${r.message}`,"error"),i("searchBtn").disabled=!1;return}let g=[];for(let[r,a]of Object.entries(s)){if(!a)continue;let d=m[r.toLowerCase()]??{},u=a.name||d.title||d.name||r,f=a.size||z(d.size)||0,x=a.files?.length?a.files:[{id:0,name:u,short_name:u,size:f,mimetype:""}];g.push({hash:r.toLowerCase(),name:u,size:f,seeders:d.seeders??0,files:x,magnet:d.magnet??d.magnet_uri??`magnet:?xt=urn:btih:${r}`})}if(i("searchBtn").disabled=!1,!g.length){l(`None of the ${n.length} results are cached on TorBox. Try a different search or check back later.`,"error");return}l(`<span style="color:var(--success)">✓</span> ${g.length} cached result${g.length>1?"s":""} — pick one to stream.`,"ok"),T(g)}function T(e){k=e;let t=i("results");t.innerHTML="",e.forEach((o,p)=>{let c=document.createElement("div");c.className="t-card",c.id=`tc-${p}`;let m=o.files.map((n,s)=>`
+      <div class="f-item" id="fi-${p}-${s}" onclick="selectFile(${p}, ${s})">
+        <div class="f-name" title="${b(n.name||n.short_name)}">${b(n.short_name||n.name||"File "+n.id)}</div>
+        <div class="f-size">${h(n.size)}</div>
+      </div>
+    `).join("");c.innerHTML=`
+      <div class="t-header" onclick="toggleCard(${p})">
+        <div class="t-title" title="${b(o.name)}">${b(o.name)}</div>
+        <div class="t-meta">
+          ${o.seeders?`<span class="seed-dot" title="${o.seeders} seeders"></span><span>${o.seeders}</span>`:""}
+          <span>${h(o.size)}</span>
+          <span class="pill pill-cached">CACHED</span>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="f-list">${m}</div>
+    `,t.appendChild(c)})}i("query").addEventListener("keydown",(e)=>{if(e.key==="Enter")B()});var v=i("apiKey"),w=localStorage.getItem("torbox_api_key");if(w)v.value=w,i("keySaved").classList.add("visible");v.addEventListener("input",()=>{let e=v.value.trim();if(e)localStorage.setItem("torbox_api_key",e);else localStorage.removeItem("torbox_api_key");i("keySaved").classList.toggle("visible",!!e)});
+</script></body>
+</html>
