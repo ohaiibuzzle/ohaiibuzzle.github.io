@@ -2,79 +2,324 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="I am @ohaiibuzzle, a software developer focused on macOS applications. Here are my open-source projects.">
-    <meta name="keywords" content="macOS, Linux, open source software">
+        content="I'm @ohaiibuzzle. I make open-source software for macOS and Linux (pretty terrible code™), and I take photos too.">
+    <meta name="keywords" content="macOS, Linux, open source software, PlayCover, Whisky, Harbor, photography">
+    <meta name="theme-color" content="#0f0a1a">
+    <meta property="og:title" content="@ohaiibuzzle">
+    <meta property="og:description" content="Pretty terrible code™, and photos.">
+    <meta property="og:image" content="https://ohaiibuzzle.dev/img/photos/14-s.jpg">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/quartz/bootstrap.min.css"
-        integrity="sha256-Danb9CUJ00kfFntARCcIvjK9ufvxKVM2XSSt/3rc7vc=" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐝</text></svg>">
 
     <title>@ohaiibuzzle</title>
 </head>
 
 <body>
-    <br>
-    <div class="container-fluid main-container">
-        <div class="jumbotron">
-            <div class="hero text-white text-center py-5">
-                <h1 class="display-6">I'm @ohaiibuzzle and I make software!</h1>
-                <p class="lead">Open Source Developer | macOS/Linux Enthusiast</p>
+    <div class="bokeh" aria-hidden="true"></div>
+
+    <header class="nav">
+        <a class="logo" href="#top">@ohaiibuzzle</a>
+        <nav>
+            <a href="#hits">the hits</a>
+            <a href="#lately">lately</a>
+            <a href="#socials">say hi</a>
+            <a href="#one-more-thing" class="nav-secret" title="don't click this">???</a>
+        </nav>
+    </header>
+
+    <main id="top">
+        <!-- ============ HERO ============ -->
+        <section class="hero wrap">
+            <p class="status"><span class="dot"></span> currently: convincing a random RK3518 TV box that it's a
+                Linux server</p>
+            <h1>
+                hi, i'm <span class="name" id="name">buzzle</span><span class="wave">👋</span><br>
+                i make software.
+            </h1>
+            <p class="tagline">Mostly <span class="tm" tabindex="0"
+                    data-tip="it's trademarked. it's on my GitHub bio. it's legally binding.">pretty terrible
+                    code™</span>.</p>
+            <p class="lede">Open-source dev. macOS tinkerer. Linux distro-hopper who gave up and started
+                building my own images. Occasionally flashes firmware onto things that did not ask for it.</p>
+
+            <div class="term" aria-hidden="true">
+                <div class="term-bar"><i></i><i></i><i></i><span>~/buzzle</span></div>
+                <pre><b>$</b> whoami
+buzzle
+<b>$</b> make it-work
+<em>✔ works on my machine</em>
+<b>$</b> git push --force
+¯\_(ツ)_/¯
+<b>$</b> <span class="cursor">▌</span></pre>
             </div>
-            <br>
 
-            <h2 class="h6">A few of which includes</h2>
-            <ul>
-                <li><a href="https://github.com/PlayCover/PlayCover">PlayCover</a> - Sideload your iOS apps on macOS
-                </li>
-                <li><a href="https://github.com/ohaiibuzzle/Harbor">Harbor</a> - super simple Wine prefix manager for
-                    macOS</li>
-                <li><a href="https://github.com/Whisky-App/Whisky">Whisky</a> - A modern Wine wrapper for macOS built
-                    with SwiftUI</li>
-                <li>
-                    <a href="https://github.com/xvzc/SpoofDPI">SpoofDPI</a> - fast anti-censorship tool in Go
-                </li>
-            </ul>
-            <h2 class="h6"><i>...plus a million and a half other stuff (mostly private/unfinished :P)</i></h2>
+            <div class="hero-stickers" aria-hidden="true">
+                <span class="sticker s-violet">✦ macOS</span>
+                <span class="sticker s-teal">🐧 Linux</span>
+                <span class="sticker s-amber">📦 bootc</span>
+                <span class="sticker s-pink">works on my machine™</span>
+                <span class="sticker s-lime">🔧 cursed hardware</span>
+            </div>
+        </section>
 
-            <br>
-
-            <h2 class="h6">My socials!</h2>
-            <ul>
-                <li><i class="fab fa-github"></i> <a href="https://github.com/ohaiibuzzle">GitHub</a></li>
-                <li><i class="fa-brands fa-mastodon"></i> <a href="https://mas.to/@buzzle"></i>@buzzle@mas.to</a> on
-                    Mastodon</li>
-                <li><i class="fa-brands fa-bluesky"></i> <a href="https://bsky.app/profile/ohaiibuzzle.dev">ohaiibuzzle.dev</a> on Bluesky</li>    
-                <li><i class="fa-brands fa-twitter"></i> I deleted my Twitter/X account</li>
-                <li><i class="fa-brands fa-linkedin"></i> My LinkedIn account (along with other professional contact
-                    information) should be on my resume I've submitted. I prefer to keep my professional work private.
-                </li>
-            </ul>
-
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a href="https://github.com/ohaiibuzzle" class="btn btn-primary btn-lg">View my projects on
-                        GitHub</a>
-                </div>
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>Swift</span><span>Go</span><span>Objective-C</span><span>Python</span><span>Shell</span><span>C</span><span>Kotlin</span><span>Rust</span><span>Dockerfile</span><span>Vue</span><span>C++</span><span>Lua</span><span>whatever compiles</span>
+                <span>Swift</span><span>Go</span><span>Objective-C</span><span>Python</span><span>Shell</span><span>C</span><span>Kotlin</span><span>Rust</span><span>Dockerfile</span><span>Vue</span><span>C++</span><span>Lua</span><span>whatever compiles</span>
             </div>
         </div>
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+
+        <!-- ============ THE HITS ============ -->
+        <section class="wrap section" id="hits">
+            <h2 class="sec-title"><span class="kicker">01</span> the hits</h2>
+            <p class="sec-sub">Stuff people actually use. I made some and helped build the others.</p>
+
+            <div class="hits">
+                <a class="card big" style="--c: var(--violet)" href="https://github.com/Whisky-App/Whisky">
+                    <span class="badge">★ 15.1k</span>
+                    <span class="role">worked on</span>
+                    <h3>Whisky</h3>
+                    <p>A modern Wine wrapper for macOS built with SwiftUI. It's retired now, but it had a great run. 🕯️</p>
+                    <span class="tags"><i>Swift</i><i>Wine</i><i>archived</i></span>
+                </a>
+                <a class="card big" style="--c: var(--pink)" href="https://github.com/PlayCover/PlayCover">
+                    <span class="badge">★ 11.8k</span>
+                    <span class="role">worked on</span>
+                    <h3>PlayCover</h3>
+                    <p>Sideload iOS apps and games onto your Apple Silicon Mac. Yes, including that gacha game.</p>
+                    <span class="tags"><i>Swift</i><i>Obj-C</i><i>macOS</i></span>
+                </a>
+                <a class="card" style="--c: var(--teal)" href="https://github.com/xvzc/SpoofDPI">
+                    <span class="badge">★ 5k</span>
+                    <span class="role">worked on</span>
+                    <h3>SpoofDPI</h3>
+                    <p>A simple, fast anti-censorship tool in Go.</p>
+                    <span class="tags"><i>Go</i><i>networking</i></span>
+                </a>
+                <a class="card" style="--c: var(--amber)" href="https://github.com/ohaiibuzzle/Harbor">
+                    <span class="badge">★ 126</span>
+                    <span class="role mine">made it</span>
+                    <h3>Harbor</h3>
+                    <p>A harbor for all your game <em>porting</em> activities (get it?). A really simple Wine prefix
+                        manager for macOS.</p>
+                    <span class="tags"><i>Swift</i><i>Wine</i></span>
+                </a>
+                <a class="card" style="--c: var(--lime)" href="https://github.com/ohaiibuzzle/USBNotifier">
+                    <span class="badge">★ 33</span>
+                    <span class="role mine">made it</span>
+                    <h3>USBNotifier</h3>
+                    <p>A notification whenever a USB device gets plugged in or pulled out. It wouldn't be Apple
+                        enough if the OS did this on its own.</p>
+                    <span class="tags"><i>Swift</i><i>macOS</i></span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============ LATELY ============ -->
+        <section class="wrap section" id="lately">
+            <h2 class="sec-title"><span class="kicker">02</span> what i'm breaking lately</h2>
+            <p class="sec-sub">Newer stuff, fresh out of the oven. Some of it is still on fire.</p>
+
+            <div class="filters" role="group" aria-label="Filter projects">
+                <button class="chip on" data-f="all">everything</button>
+                <button class="chip" data-f="apple">🍎 apple-land</button>
+                <button class="chip" data-f="linux">🐧 linux-land</button>
+                <button class="chip" data-f="read">📚 reading things</button>
+                <button class="chip" data-f="bots">🤖 bots &amp; glue</button>
+                <button class="chip" data-f="tiny">🔧 tiny tools</button>
+            </div>
+
+            <div class="grid" id="grid">
+                <a class="card" data-cat="apple" style="--c: var(--pink)"
+                    href="https://github.com/ohaiibuzzle/iOSAppRunner">
+                    <span class="cat">🍎</span>
+                    <h3>iOSAppRunner</h3>
+                    <p>A Catalyst wrapper that launches iOS apps inside Catalyst. The goal is to put an end to
+                        PlayCover's keychain and sandbox headaches.</p>
+                    <span class="tags"><i>Obj-C</i><i>Catalyst</i></span>
+                </a>
+                <a class="card" data-cat="apple" style="--c: var(--violet)"
+                    href="https://github.com/ohaiibuzzle/PlayToolsPluginExample">
+                    <span class="cat">🍎</span>
+                    <h3>PlayTools plugins</h3>
+                    <p>A new loadable user-plugin system for PlayTools, plus an example repo to start hacking from.
+                    </p>
+                    <span class="tags"><i>Obj-C</i><i>PlayCover</i></span>
+                </a>
+                <a class="card" data-cat="apple" style="--c: var(--teal)"
+                    href="https://github.com/ohaiibuzzle/ChatWithIntelligence">
+                    <span class="cat">🍎</span>
+                    <h3>ChatWith<wbr>Intelligence</h3>
+                    <p>A SwiftUI chat app for Apple's on-device FoundationModels on macOS/iOS 26.</p>
+                    <span class="tags"><i>Swift</i><i>on-device AI</i></span>
+                </a>
+                <a class="card" data-cat="linux" style="--c: var(--teal)"
+                    href="https://github.com/ohaiibuzzle/cachy-bootc">
+                    <span class="cat">🐧</span>
+                    <h3>cachy-bootc + buzzle-desktop</h3>
+                    <p>CachyOS as a bootable container, and my own immutable desktop image built on top of it.
+                        My laptop is a Dockerfile now.</p>
+                    <span class="tags"><i>bootc</i><i>CachyOS</i></span>
+                </a>
+                <a class="card" data-cat="linux" style="--c: var(--amber)"
+                    href="https://github.com/ohaiibuzzle/armbian-tv98-rk3518">
+                    <span class="cat">🐧</span>
+                    <h3>armbian-tv98-rk3518</h3>
+                    <p>Armbian and mainline U-Boot on a no-name RK3518 Android TV box. Wi-Fi and Bluetooth work.
+                        <b>Do not</b> run <code>armbian-install</code>.</p>
+                    <span class="tags"><i>U-Boot</i><i>ARM</i><i>fresh</i></span>
+                </a>
+                <a class="card" data-cat="read" style="--c: var(--violet)"
+                    href="https://github.com/ohaiibuzzle/aidoku-backend-0.7">
+                    <span class="cat">📚</span>
+                    <h3>aidoku-backend</h3>
+                    <p>A Go reimplementation of Aidoku's source runner (WASM + QuickJS), wrapped in a KOReader
+                        plugin so you can grab manga right on your e-reader.</p>
+                    <span class="tags"><i>Go</i><i>KOReader</i></span>
+                </a>
+                <a class="card" data-cat="read" style="--c: var(--lime)"
+                    href="https://github.com/ohaiibuzzle/drivereader">
+                    <span class="cat">📚</span>
+                    <h3>drivereader</h3>
+                    <p>Reads a public Google Drive folder like the pages of a book. No sign-in needed.</p>
+                    <span class="tags"><i>Vue</i><i>Deno</i></span>
+                </a>
+                <a class="card" data-cat="bots" style="--c: var(--pink)"
+                    href="https://github.com/ohaiibuzzle/BuzzUtils3">
+                    <span class="cat">🤖</span>
+                    <h3>BuzzUtils3</h3>
+                    <p>My utility bot, rewritten again. Go faster this time (the language <em>and</em> the
+                        speed).</p>
+                    <span class="tags"><i>Go</i><i>Discord</i></span>
+                </a>
+                <a class="card" data-cat="bots" style="--c: var(--amber)"
+                    href="https://github.com/ohaiibuzzle/copilot-mcp">
+                    <span class="cat">🤖</span>
+                    <h3>copilot-mcp</h3>
+                    <p>The Copilot CLI as an MCP server, so you can <s>abuse</s> make the best use of your
+                        corporate plan. The README calls it "horrible horrible". Accurate.</p>
+                    <span class="tags"><i>Python</i><i>MCP</i></span>
+                </a>
+                <a class="card" data-cat="tiny" style="--c: var(--teal)"
+                    href="https://github.com/ohaiibuzzle/decky-spoof-dpi">
+                    <span class="cat">🔧</span>
+                    <h3>decky-spoof-dpi</h3>
+                    <p>SpoofDPI as a Decky Loader plugin. Anti-censorship, but on your Steam Deck.</p>
+                    <span class="tags"><i>Python</i><i>Steam Deck</i></span>
+                </a>
+                <a class="card" data-cat="tiny" style="--c: var(--violet)"
+                    href="https://github.com/ohaiibuzzle/rockbox-plugin-hid">
+                    <span class="cat">🔧</span>
+                    <h3>rockbox-plugin-hid</h3>
+                    <p>Makes a Rockbox music player type text over USB HID. There's also a mouse jiggler. You know
+                        what that's for.</p>
+                    <span class="tags"><i>C</i><i>Rockbox</i></span>
+                </a>
+                <a class="card" data-cat="tiny" style="--c: var(--lime)"
+                    href="https://github.com/ohaiibuzzle/go-secure-dns-proxy">
+                    <span class="cat">🔧</span>
+                    <h3>go-secure-dns-proxy</h3>
+                    <p>A tiny non-caching DNS server that speaks several flavours of secure DNS.</p>
+                    <span class="tags"><i>Go</i><i>DNS</i></span>
+                </a>
+                <a class="card" data-cat="tiny" style="--c: var(--amber)"
+                    href="https://github.com/ohaiibuzzle/FotorgearFlashControl">
+                    <span class="cat">🔧</span>
+                    <h3>Fotorgear<wbr>FlashControl</h3>
+                    <p>An Android app that controls a Fotorgear COB flash. Wait, why do I own a flash? 👀</p>
+                    <span class="tags"><i>Kotlin</i><i>foreshadowing</i></span>
+                </a>
+                <a class="card" data-cat="tiny" style="--c: var(--pink)"
+                    href="https://github.com/ohaiibuzzle/bash-mommy">
+                    <span class="cat">🔧</span>
+                    <h3>bash-mommy</h3>
+                    <p>"Mommy is here, bashing you~~". No further questions.</p>
+                    <span class="tags"><i>Shell</i><i>emotional support</i></span>
+                </a>
+            </div>
+
+            <div class="etc">
+                <p class="etc-big">…plus a million and a half other stuff</p>
+                <p class="etc-small">(mostly private/unfinished :P)</p>
+                <a class="btn" href="https://github.com/ohaiibuzzle">dig through my GitHub <i
+                        class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- ============ SOCIALS ============ -->
+        <section class="wrap section" id="socials">
+            <h2 class="sec-title"><span class="kicker">03</span> say hi</h2>
+            <div class="socials">
+                <a class="social" href="https://github.com/ohaiibuzzle"><i class="fab fa-github"></i><span>GitHub<small>ohaiibuzzle</small></span></a>
+                <a class="social" rel="me" href="https://mas.to/@buzzle"><i class="fa-brands fa-mastodon"></i><span>Mastodon<small>@buzzle@mas.to</small></span></a>
+                <a class="social" href="https://bsky.app/profile/ohaiibuzzle.dev"><i class="fa-brands fa-bluesky"></i><span>Bluesky<small>ohaiibuzzle.dev</small></span></a>
+                <div class="social dead"><i class="fa-brands fa-twitter"></i><span><s>Twitter/X</s><small>deleted it. no regrets.</small></span></div>
+                <div class="social dead"><i class="fa-brands fa-linkedin"></i><span>LinkedIn<small>it's on the resume I sent you. I keep professional stuff private.</small></span></div>
+            </div>
+        </section>
+
+        <!-- ============ ONE MORE THING ============ -->
+        <section id="one-more-thing" class="omt-wrap">
+            <div class="stage" id="stage" data-step="0">
+                <div class="tv" aria-hidden="true">
+                    <!-- filled (and shuffled) by main.js -->
+                    <div class="slides" id="slides"></div>
+                </div>
+
+                <!-- the photos: a strip that takes over the frame when the intro ends -->
+                <div class="strip" id="strip" role="region" aria-label="Photos"></div>
+                <button class="strip-nav prev" id="strip-prev" type="button" aria-label="Scroll photos left">‹</button>
+                <button class="strip-nav next" id="strip-next" type="button" aria-label="Scroll photos right">›</button>
+
+                <div class="brackets" aria-hidden="true"><span class="tl"></span><span class="br"></span></div>
+
+                <!-- letters get split into spans by main.js so they can flicker in -->
+                <p class="omt-title" id="omt-title" aria-label="One more thing">
+                    <span class="line">ONE MORE</span>
+                    <span class="line">THING</span>
+                </p>
+
+                <div class="reveal">
+                    <h2>I do photography<br>outside of code too!</h2>
+                    <p>Cosplay, cities, and a lot of golden hour. Every photo here was shot on a phone (yes, really).</p>
+                    <div class="reveal-actions">
+                        <button class="btn ghost" id="replay" type="button"><i class="fa-solid fa-rotate-left"></i>
+                            replay</button>
+                    </div>
+                </div>
+
+                <button class="skip" id="skip" type="button">skip intro →</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="wrap footer">
+        <p>Hand-written HTML, zero frameworks. Still pretty terrible code™.</p>
+        <a href="#top">back to top ↑</a>
+    </footer>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+        <button class="lb-btn lb-close" data-lb="close" aria-label="Close">✕</button>
+        <button class="lb-btn lb-prev" data-lb="prev" aria-label="Previous photo">‹</button>
+        <figure>
+            <img id="lb-img" alt="">
+            <figcaption id="lb-cap"></figcaption>
+        </figure>
+        <button class="lb-btn lb-next" data-lb="next" aria-label="Next photo">›</button>
+    </dialog>
+
+    <script src="photos.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
