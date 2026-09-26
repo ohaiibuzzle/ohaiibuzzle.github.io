@@ -79,6 +79,8 @@ img {
     inset: 0;
     z-index: -1;
     overflow: hidden;
+    /* the drifting circles must never widen the page */
+    contain: paint;
     background:
         radial-gradient(1200px 700px at 80% -10%, #3a1d5c 0%, transparent 60%),
         radial-gradient(900px 600px at -10% 40%, #2a1344 0%, transparent 60%),
@@ -431,6 +433,16 @@ img {
 }
 
 /* ---------- marquee ---------- */
+
+/* the tilted marquee spills past the page edges and a rotated box can't
+   clip itself, so this wrapper does. The padding leaves room for the tilt
+   (tan 1.5deg ≈ 1.3vw) and the matching negative margin cancels it out. */
+.marquee-clip {
+    overflow: hidden;
+    padding-block: 2vw;
+    margin-block: -2vw;
+    pointer-events: none;
+}
 
 .marquee {
     overflow: hidden;
@@ -1102,6 +1114,28 @@ a.social:hover small {
     justify-content: center;
 }
 
+/* once someone starts looking through the photos, the headline and its
+   glow step aside and replay tucks in at the bottom (main.js adds .settled) */
+.reveal h2,
+.reveal p {
+    transition: opacity .6s ease;
+}
+
+.settled .reveal h2,
+.settled .reveal p,
+.settled .brackets,
+.settled.stage::after {
+    opacity: 0;
+}
+
+.settled .reveal-actions {
+    position: absolute;
+    left: 50%;
+    bottom: 36px;
+    transform: translateX(-50%);
+    animation: fade .6s ease;
+}
+
 .btn.light {
     background: var(--paper);
     box-shadow: 4px 4px 0 var(--pink);
@@ -1265,6 +1299,20 @@ a.social:hover small {
     }
 }
 
+/* the takedown / credit line under the stage */
+.photo-note {
+    margin: 0 auto;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font: 400 13px var(--mono);
+    color: var(--muted);
+    text-align: center;
+}
+
+.photo-note a:hover {
+    color: var(--text);
+}
+
 /* ---------- lightbox ---------- */
 
 .lightbox {
@@ -1309,7 +1357,8 @@ a.social:hover small {
 }
 
 .lightbox img {
-    max-height: calc(100% - 40px);
+    /* leaves room for the figure's padding and the caption */
+    max-height: calc(100dvh - 130px);
     max-width: 100%;
     object-fit: contain;
     border-radius: 6px;

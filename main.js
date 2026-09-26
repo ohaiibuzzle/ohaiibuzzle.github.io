@@ -70,8 +70,9 @@
     const PHOTOS = window.PHOTOS || [];
     const isPlace = (p) => p.kind === "places";
     const isPortrait = (p) => p.h > p.w;
-    // no captions on purpose: just a plain description for screen readers
-    const label = (p) => (isPlace(p) ? "Photo of a place" : "Cosplay photo");
+    // no captions on purpose: just a description for screen readers
+    // (photos.js "alt", or a generic one if a photo doesn't have it yet)
+    const label = (p) => p.alt || (isPlace(p) ? "Photo of a place" : "Cosplay photo");
 
     // shuffled fresh on every page load, but always opening on a place
     const order = shuffle(PHOTOS);
@@ -284,6 +285,9 @@
         onScreen ? startDrift() : stopDrift();
     }, { threshold: 0.3 }).observe(stage);
 
+    // the first real interaction with the wall moves the headline out of the way
+    const settle = () => current === 6 && stage.classList.add("settled");
+
     // anyone touching the wall gets control; the drift resumes after a bit
     strip.addEventListener("pointerenter", (e) => e.pointerType === "mouse" && (hovering = true));
     strip.addEventListener("pointerleave", (e) => {
@@ -292,12 +296,13 @@
             hold(1500);
         }
     });
-    strip.addEventListener("pointerdown", () => hold(5000));
-    strip.addEventListener("wheel", () => hold(4000), { passive: true });
-    strip.addEventListener("focusin", () => hold(8000));
+    strip.addEventListener("pointerdown", () => (hold(5000), settle()));
+    strip.addEventListener("wheel", () => (hold(4000), settle()), { passive: true });
+    strip.addEventListener("focusin", () => (hold(8000), settle()));
     strip.addEventListener("scroll", () => {
         // a scroll we didn't cause (swipe, trackpad, keys): follow it, and loop it
         if (Math.abs(strip.scrollLeft - lastSet) > 2) {
+            settle();
             glide = null;
             drift = strip.scrollLeft;
             if (wrap()) strip.scrollLeft = drift;
@@ -308,6 +313,7 @@
 
     const nudge = (d) => {
         hold(6000);
+        settle();
         const by = d * strip.clientWidth * 0.8;
         if (reduced || !raf) {
             drift += by;
@@ -340,6 +346,7 @@
     const play = () => {
         timers.forEach(clearTimeout);
         timers = [];
+        stage.classList.remove("settled");
         slideImgs.forEach((img) => (img.loading = "eager"));
         glide = null;
         drift = period;

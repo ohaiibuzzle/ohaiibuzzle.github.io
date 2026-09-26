@@ -8,9 +8,15 @@
         content="I'm @ohaiibuzzle. I make open-source software for macOS and Linux (pretty terrible code™), and I take photos too.">
     <meta name="keywords" content="macOS, Linux, open source software, PlayCover, Whisky, Harbor, photography">
     <meta name="theme-color" content="#0f0a1a">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ohaiibuzzle.dev/">
     <meta property="og:title" content="@ohaiibuzzle">
     <meta property="og:description" content="Pretty terrible code™, and photos.">
-    <meta property="og:image" content="https://ohaiibuzzle.dev/img/photos/14-s.jpg">
+    <meta property="og:image" content="https://ohaiibuzzle.dev/img/photos/b268b59f5cd0.jpg">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="1500">
+    <meta property="og:image:alt" content="Seoul Station's glass front and sign at dusk, under a pink and purple sky">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,11 +78,14 @@ buzzle
             </div>
         </section>
 
-        <div class="marquee" aria-hidden="true">
+        <!-- the marquee is tilted, so its corners poke out; this clips them -->
+        <div class="marquee-clip" aria-hidden="true">
+        <div class="marquee">
             <div class="marquee-track">
                 <span>Swift</span><span>Go</span><span>Objective-C</span><span>Python</span><span>Shell</span><span>C</span><span>Kotlin</span><span>Rust</span><span>Dockerfile</span><span>Vue</span><span>C++</span><span>Lua</span><span>whatever compiles</span>
                 <span>Swift</span><span>Go</span><span>Objective-C</span><span>Python</span><span>Shell</span><span>C</span><span>Kotlin</span><span>Rust</span><span>Dockerfile</span><span>Vue</span><span>C++</span><span>Lua</span><span>whatever compiles</span>
             </div>
+        </div>
         </div>
 
         <!-- ============ THE HITS ============ -->
@@ -300,6 +309,9 @@ buzzle
 
                 <button class="skip" id="skip" type="button">skip intro →</button>
             </div>
+            <p class="photo-note wrap">Want a photo taken down or a credit added? Message me on
+                <a href="https://mas.to/@buzzle">Mastodon</a> or
+                <a href="https://bsky.app/profile/ohaiibuzzle.dev">Bluesky</a>.</p>
         </section>
     </main>
 
