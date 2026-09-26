@@ -97,24 +97,27 @@
             .join("");
     });
 
-    // two photos: the TV always opens on a place, then one random photo goes
-    // full-screen, picked to match the screen's shape (portrait on phones,
-    // landscape on desktop) so it isn't awkwardly cropped
-    const portraitScreen = stage.clientHeight > stage.clientWidth;
+    // one photo all the way through: the TV opens on a place, goes full-screen,
+    // then the camera pulls back to show it between two more photos
     const opener = order.find((p) => isPlace(p) && !isPortrait(p)) || order[0];
     const others = order.filter((p) => p !== opener);
-    const reel = [opener, others.find((p) => isPortrait(p) === portraitScreen) || others[0]].filter(Boolean);
-    reel.forEach((p) => {
+    // the side panels are portrait-shaped, so prefer portrait photos for them
+    const flank = [...others.filter(isPortrait), ...others.filter((p) => !isPortrait(p))].slice(0, 2);
+    const photoImg = (src) => {
         const img = document.createElement("img");
-        img.src = `img/photos/${p.id}.jpg`;
+        img.src = src;
         img.alt = "";
         img.loading = "lazy";
-        slides.appendChild(img);
-    });
-    const slideImgs = $$("img", slides);
-    const showSlide = (i) => slideImgs.forEach((img, k) => img.classList.toggle("on", k === i));
+        return img;
+    };
+    const slideImg = photoImg(`img/photos/${opener.id}.jpg`);
+    slides.appendChild(slideImg);
+    const sides = $$(".side", stage);
+    // the side panels are small, so thumbnails are plenty
+    flank.forEach((p, k) => sides[k].appendChild(photoImg(`img/photos/${p.id}-s.jpg`)));
+    const introImgs = $$("img", stage).filter((img) => !strip.contains(img));
 
-    // step → geometry in px: the TV's box and the brackets around it
+    // step → geometry in px: the TV's box, the two side panels and the brackets
     const geometry = (step) => {
         const W = stage.clientWidth;
         const H = stage.clientHeight;
@@ -124,29 +127,52 @@
         const full = { x: 0, y: 0, w: W, h: H };
         const fs = Math.min(34, W * 0.062);
         const pad = 40;
-        if (step === 0) return { tv, bw: 60, bh: 40 };
-        if (step <= 2) return { tv, bw: Math.min(W - 32, fs * 11.5 + pad * 2), bh: fs * 2.9 + pad * 2 };
-        if (step === 3) return { tv, bw: tw + 44, bh: th + 44 };
-        if (step <= 5) return { tv: full, bw: W * 0.72, bh: H * 0.64 };
-        return { tv: full, bw: Math.min(860, W * 0.9), bh: Math.min(440, H * 0.72) };
+
+        // step 5: three portrait panels side by side. They all fit on wide
+        // screens; on phones the middle one is bigger and the sides peek in.
+        const gap = W > H ? 16 : 10;
+        let pw = W > H ? Math.min((W * 0.92 - gap * 2) / 3, H * 0.62 * 0.75) : W * 0.56;
+        const ph = pw / (W > H ? 0.75 : 0.5625);
+        const mid = { x: (W - pw) / 2, y: (H - ph) / 2, w: pw, h: ph };
+        const trio = [
+            { ...mid, x: mid.x - gap - pw },
+            { ...mid, x: mid.x + pw + gap },
+        ];
+        // before that, the side panels sit where the same zoom would put them
+        // while the middle one fills the screen: just off both edges
+        const kx = W / mid.w;
+        const ky = H / mid.h;
+        const zoomed = trio.map((r) => ({ x: (r.x - mid.x) * kx, y: 0, w: r.w * kx, h: H }));
+
+        if (step === 0) return { tv, sides: zoomed, bw: 60, bh: 40 };
+        if (step <= 2) return { tv, sides: zoomed, bw: Math.min(W - 32, fs * 11.5 + pad * 2), bh: fs * 2.9 + pad * 2 };
+        if (step === 3) return { tv, sides: zoomed, bw: tw + 44, bh: th + 44 };
+        if (step === 4) return { tv: full, sides: zoomed, bw: W * 0.72, bh: H * 0.64 };
+        if (step === 5) return { tv: mid, sides: trio, bw: Math.min(W - 24, pw * 3 + gap * 2 + 44), bh: ph + 44 };
+        return { tv: mid, sides: trio, bw: Math.min(860, W * 0.9), bh: Math.min(440, H * 0.72) };
     };
 
-    const SLIDE_FOR_STEP = { 3: 0, 4: 1, 6: 1 };
     let current = 0;
 
     const setStep = (step) => {
         current = step;
-        const { tv, bw, bh } = geometry(step);
-        const set = (k, v) => stage.style.setProperty(k, `${Math.round(v)}px`);
+        const { tv, sides: panels, bw, bh } = geometry(step);
+        const px = (v) => `${Math.round(v)}px`;
+        const set = (k, v) => stage.style.setProperty(k, px(v));
         set("--tx", tv.x);
         set("--ty", tv.y);
         set("--tw", tv.w);
         set("--th", tv.h);
         set("--bw", bw);
         set("--bh", bh);
+        panels.forEach((r, k) => {
+            if (!sides[k]) return;
+            Object.assign(sides[k].style, { left: px(r.x), top: px(r.y), width: px(r.w), height: px(r.h) });
+        });
         [...stage.classList].filter((c) => /^s\d$/.test(c)).forEach((c) => stage.classList.remove(c));
         for (let s = 1; s <= step; s++) stage.classList.add(`s${s}`);
-        if (step in SLIDE_FOR_STEP) showSlide(SLIDE_FOR_STEP[step]);
+        // (off before the TV shows up, so replay restarts its slow zoom)
+        slideImg.classList.toggle("on", step >= 3);
         // let the strip slide in and settle before it starts drifting
         if (step === 6) hold(2500);
     };
@@ -338,8 +364,9 @@
         [300, 1],     // fade up, brackets appear
         [1200, 2],    // ONE MORE / THING flickers in
         [3800, 3],    // everything shrinks into the TV on the wall
-        [5800, 4],    // TV goes full-bleed → the random photo
-        [8000, 6],    // reveal + the photo wall (step 5 retired)
+        [5800, 4],    // TV goes full-bleed on the same photo, in colour
+        [7800, 5],    // pull back: it's the middle of three photos
+        [9800, 6],    // reveal + the photo wall
     ];
 
     let timers = [];
@@ -347,7 +374,7 @@
         timers.forEach(clearTimeout);
         timers = [];
         stage.classList.remove("settled");
-        slideImgs.forEach((img) => (img.loading = "eager"));
+        introImgs.forEach((img) => (img.loading = "eager"));
         glide = null;
         drift = period;
         strip.scrollLeft = lastSet = drift;
@@ -380,7 +407,7 @@
     new IntersectionObserver(
         (entries, obs) => {
             if (entries[0].isIntersecting) {
-                slideImgs.forEach((img) => (img.loading = "eager"));
+                introImgs.forEach((img) => (img.loading = "eager"));
                 obs.disconnect();
             }
         },

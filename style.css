@@ -898,7 +898,8 @@ a.social:hover small {
 .stage.s1 { background: #4a4743; }
 .stage.s2 { background: #6b6762; }
 .stage.s3 { background: #bdb8b0; }
-.stage.s6 { background: #0b0714; }
+/* the camera pulls back from the wall into the gallery's night */
+.stage.s5 { background: #0b0714; }
 
 /* the "TV": a landscape box on the wall that grows to fill the stage */
 .tv {
@@ -935,6 +936,37 @@ a.social:hover small {
 .slides {
     overflow: hidden;
     background: #222;
+    transition: border-radius 1.5s var(--ease);
+}
+
+/* the two photos either side of the TV when the camera pulls back.
+   Their box is set in px by main.js, just like the TV's. */
+.side {
+    position: absolute;
+    overflow: hidden;
+    background: #222;
+    opacity: 0;
+    transition:
+        left 1.5s var(--ease), top 1.5s var(--ease),
+        width 1.5s var(--ease), height 1.5s var(--ease),
+        border-radius 1.5s var(--ease), opacity .7s ease;
+}
+
+.side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* full-screen TV: the side photos wait just off both edges */
+.s4 .side {
+    opacity: 1;
+}
+
+/* rounded like the gallery's tiles once all three are in view */
+.s5 .slides,
+.s5 .side {
+    border-radius: 8px;
 }
 
 .slides img {
@@ -1184,7 +1216,8 @@ a.social:hover small {
 /* ---------- photo strip (inside the stage) ---------- */
 
 /* the TV steps aside once the strip takes over */
-.s6 .tv {
+.s6 .tv,
+.s6 .side {
     opacity: 0;
     transition: opacity 1s ease;
 }
